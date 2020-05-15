@@ -1,25 +1,44 @@
 {
     "username": "jellyfish",
-    "data": [
+    "log": [
         {
-            "year": "2020",
-            "months": [
-                {
-                    "month": "01",
-                    "days": [
-                        {
-                            "day": "01",
-                            "logs": [
-                                {
-                                    "timestamp": "10:03:00",
-                                    "hunger-score": 3.5,
-                                    "note": "Woke up feeling kind of hungry"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
+            "timestamp": "2020-05-11T10:27:19+0000",
+            "hunger-score": 3.4,
+            "note": "Woke up feeling kind of hungry"
+        },
+        {
+            "timestamp": "2020-05-11T12:25:34+0000",
+            "hunger-score": 5.1,
+            "note": "Not hungry but am wanting to grab some snacks..."
+        },
+        {
+            "timestamp": "2020-05-11T14:30:57+0000",
+            "hunger-score": 2.5,
+            "note": "Really hungry but not ready to have lunch yet!"
+        },
+    ],
+    "meals": [
+        {
+            "timestamp": "2020-05-11T11:19:27+0000",
+            "scores": [
+                3.1,
+                4.2,
+                4.7,
+                5.2,
+                6.1
+            ],
+            "note": "Ate some cereal and toast"
+        },
+        {
+            "timestamp": "2020-05-11T14:51:15+0000",
+            "scores": [
+                1.9,
+                2.5,
+                3.8,
+                4.1,
+                5.9
+            ],
+            "note": "Went to Bowl of Pho and had some pho."
         }
     ]
 }

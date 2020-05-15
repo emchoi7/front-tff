@@ -1,0 +1,47 @@
+[
+    {
+        "username": "Eugene Choi",
+        "goal": "45.0",
+        "unit": "kg",
+        "current-weight": "59.8",
+        "weigh-in": [
+            {
+                "date": "05-12-2020",
+                "weight": "61.1"
+            },
+            {
+                "date": "05-13-2020",
+                "weight": "61.1"
+            },
+            {
+                "date": "05-14-2020",
+                "weight": "60.4"
+            },
+            {
+                "date": "05-15-2020",
+                "weight": "59.8"
+            }
+        ],
+        "progress-pics": [
+            {
+                "date": "05-12-2020",
+                "url": "image.jpg"
+            }
+        ],
+        "meal-log": [
+            {
+                "date": "05-12-2020",
+                "meals": {
+                    "meal": "breakfast",
+                    "items": [
+                        {
+                            "item": "Peanut butter on toast",
+                            "quantity": 1,
+                            "timestamp": "10:30:00"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+]
