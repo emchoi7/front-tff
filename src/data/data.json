@@ -16,6 +16,11 @@
             "hunger-score": 2.5,
             "note": "Really hungry but not ready to have lunch yet!"
         },
+        {
+            "timestamp": "2020-05-11T18:48:29+0000",
+            "hunger-score": 3.4,
+            "note": "Feeling pretty hungry for dinner."
+        }
     ],
     "meals": [
         {
