@@ -1,12 +1,19 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Display from './Display/Display';
+import data from './data/data';
 
-function App() {
-  return (
-    <div className="App">
-      <Display />
-    </div>
-  );
+export default class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+
+    };
+  }
+  render() {
+    return (
+      <div>
+        <Display records={data.log} />
+      </div>
+    )
+  }
 }
-
-export default App;

@@ -1,21 +1,10 @@
-/* Main display panel in the middle of the page */
-import React, { Component } from 'react';
+import React from 'react';
 import Daily from '../Daily/Daily';
 
-export default class Display extends Component {
-    constructor() {
-        super();
-        this.state = {
-            mode: "daily"
-        };
-    }
-
-    render() {
-        let time = <Daily />
-        return (
-            <div>
-                {time}
-            </div>
-        )
-    }
+export default function Display(props) {
+    return (
+        <div className="display">
+            <Daily records={props.records} date={'May 05, 2020'}/>
+        </div>
+    )
 }

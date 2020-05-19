@@ -1,4 +1,4 @@
-{
+const data = {
     "username": "jellyfish",
     "log": [
         {
@@ -47,3 +47,5 @@
         }
     ]
 }
+
+export default data;

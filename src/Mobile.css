@@ -1,0 +1,9 @@
+:root{
+    --mobile-width: 375px;
+}
+
+@media (max-width: var(--mobile-width)) {
+    .display {
+        width: 100vw;
+    }
+}
