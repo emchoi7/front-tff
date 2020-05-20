@@ -4,6 +4,7 @@
     Record components are put into an array 
 */
 import React from 'react';
+import '../colors.css';
 
 export default function Daily(props) {
     console.log(props.records)
@@ -39,6 +40,7 @@ function DateSelector(props) {
 function Record(props) {
     let hungerLevel = 'Neutral';
     let colorClass = 'hunger-blue';
+    let classNames = ['record-card', 'd-flex', 'justify-content-center'];
 
     if(props.score >= 0 && props.score < 1) {
         hungerLevel = 'Starving';
@@ -69,10 +71,15 @@ function Record(props) {
         colorClass = 'hunger-red';
     }
 
+    classNames.push(colorClass);
+    const classes = classNames.join(' ');
+
     return (
-        <div className={colorClass}>
-            <p>{props.time}</p>
-            <h2>{hungerLevel}</h2>
+        <div className={classes}>
+            <div>
+            <p className="text-center">{props.time}</p>
+            <h3 className="text-center">{hungerLevel}</h3>
+            </div>
         </div>
     )
 }

@@ -1,0 +1,27 @@
+:root{
+    --red: #E88155;
+    --orange: #EEB05A;
+    --yellow: #F4DE5F;
+    --green: #B2D87C;
+    --blue: #70D399;
+}
+
+.hunger-red {
+    background-color: var(--red);
+}
+
+.hunger-orange {
+    background-color: var(--orange);
+}
+
+.hunger-yellow {
+    background-color: var(--yellow);
+}
+
+.hunger-green {
+    background-color: var(--green);
+}
+
+.hunger-blue {
+    background-color: var(--blue);
+}

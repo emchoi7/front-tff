@@ -1,3 +1,8 @@
+/* 
+    Contains the Display component which is the main middle part that 
+    displays the user's records.
+    Depending on the App component's state, it renders Daily or Monthly component.
+*/
 import React from 'react';
 import Daily from '../Daily/Daily';
 
