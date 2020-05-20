@@ -6,33 +6,43 @@
 import React from 'react';
 import '../colors.css';
 
+
 export default function Daily(props) {
-    console.log(props.records)
     const records = props.records.map((record, index) => <Record 
             key={index}
-            score={record["hunger-score"]}
-            time={record.timestamp}
-            notes={record.notes}
+            score={record.score}
+            time={record.time}
+            notes={record.text}
         />
     );
+
     return (
-        <div>
-            <DateSelector date={props.date} />
-            {records}
+        <div className="container">
+            <div className="row mb-2">
+                <div className="col text-center">
+                    <DateSelector date={props.date} />
+                </div>
+            </div>
+            <div className="row">
+                <div className="col text-center">
+                    {records}
+                </div>
+            </div>
         </div>
     )
 }
 
 function DateSelector(props) {
+    console.log(props.date)
     return (
-        <div>
-            <button> {"<"} </button>
+        <div className="date-selector">
+                <button className="date-back"> {"<"} </button>
 
-            <button>
-                <h3>{props.date}</h3>
-            </button>
+                <button className="date-selector-btn">
+                    <h4>{props.date}</h4>
+                </button>
 
-            <button> {">"} </button>
+                <button className="date-next"> {">"} </button>
         </div>
     )
 }
@@ -40,7 +50,7 @@ function DateSelector(props) {
 function Record(props) {
     let hungerLevel = 'Neutral';
     let colorClass = 'hunger-blue';
-    let classNames = ['record-card', 'd-flex', 'justify-content-center'];
+    let classNames = ['record-card', 'container', 'mb-3'];
 
     if(props.score >= 0 && props.score < 1) {
         hungerLevel = 'Starving';
@@ -76,10 +86,12 @@ function Record(props) {
 
     return (
         <div className={classes}>
-            <div>
-            <p className="text-center">{props.time}</p>
-            <h3 className="text-center">{hungerLevel}</h3>
-            </div>
+                <div className="row">
+                    <p className="text-center col m-1">{props.time}</p>
+                </div>
+                <div className="row">
+                    <h3 className="text-center col mt-0">{hungerLevel}</h3>
+                </div>
         </div>
     )
 }

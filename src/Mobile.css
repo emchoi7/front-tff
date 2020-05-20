@@ -2,8 +2,15 @@
     --mobile-width: 375px;
 }
 
-@media (max-width: var(--mobile-width)) {
+@media all and (max-width: 375px) {
+    /* Font Sizes */
+    p {
+
+    }
     .display {
         width: 100vw;
+    }
+    .record-card {
+        width: 200px;
     }
 }

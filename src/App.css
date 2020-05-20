@@ -1,5 +1,18 @@
-
 .record-card {
-    margin: 5px;
     border-radius: 5px;
+}
+
+.date-selector-btn {
+    background-color: none;
+    border-width: 0px;
+}
+
+.date-back {
+    background-color: none;
+    border-width: 0px;
+}
+
+.date-next {
+    background-color: none;
+    border-width: 0px;
 }

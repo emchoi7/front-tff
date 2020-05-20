@@ -1,0 +1,9 @@
+:root{
+    --web-width: 376px;
+}
+
+@media all and (min-width: 376px) {
+    .record-card {
+        width: 250px;
+    }
+}
