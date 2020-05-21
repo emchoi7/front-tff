@@ -45,19 +45,73 @@ export default class App extends Component {
 
   }
 
+  // Click one day back
+  handleClickDateBack = () => {
+    let {year, month, day} = this.state
+    let daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
+    
+    day = Number(day);
+    if(day - 1 < 1) {
+      month = Number(month);
+      if(month - 1 < 1) {
+        month = "12";
+        year = Number(year) - 1;
+      } else {
+        month = month - 1
+      }
+      // Deal with day based on leap-year or not 
+      if(year%4 === 0) {
+        if(year%100 === 0) {
+          if(year%400 !== 0) {
+            // Leap Year
+            daysInMonth[1] = 29;
+          }
+        } else {
+          // Leap Year
+          daysInMonth[1] = 29;
+        }
+      }
+
+      day = daysInMonth[month];
+      day = String(day);
+      month = String(month);
+      year = String(year);
+    } else {
+      day = day - 1;
+    }
+
+    const dateStr = year + '-' + month + '-' + day;
+    const date = new Date(dateStr);
+    const formattedDateStr = date.toDateString();
+    const todaysData = recordsData.filter(
+      record => record.year === year 
+      && record.month === month 
+      && record.day === day
+    );
+
+    this.setState(() => {
+      return {
+        today: formattedDateStr,
+        year,
+        month,
+        day,
+        data: todaysData
+      }
+    });
+  }
+
+  // Click one day forward
+
+  // Click DateSelector
+
   render() {
     return (
       <div className="container">
-        <div className="row">
 
-          {/* <div className="col">
-          </div> */}
           <div className="col">
             <Display records={this.state.data} date={this.state.today} mode={this.state.mode}/>
           </div>
-          {/* <div className="col">
-          </div> */}
-        </div>
+
       </div>
 
     )

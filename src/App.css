@@ -1,18 +1,33 @@
 .record-card {
     border-radius: 5px;
+    cursor: pointer;
 }
 
-.date-selector-btn {
+/* .date-selector-btn {
     background-color: none;
     border-width: 0px;
+    cursor: pointer;
 }
 
 .date-back {
     background-color: none;
     border-width: 0px;
+    cursor: pointer;
 }
 
 .date-next {
     background-color: none;
     border-width: 0px;
+    cursor: pointer;
+} */
+
+button {
+    background-color: none;
+    border-width: 0px;
+    cursor: pointer;
+}
+
+button:focus {
+    border: none;
+    outline:none;
 }
