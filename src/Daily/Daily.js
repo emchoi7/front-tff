@@ -6,7 +6,7 @@
 import React from 'react';
 import '../colors.css';
 
-
+// Clicking on Record is only a rendering change so... Fcn should stay in the Daily component? Or Record component?
 export default function Daily(props) {
     const records = props.records.map((record, index) => <Record 
             key={index}
@@ -20,7 +20,10 @@ export default function Daily(props) {
         <div className="container">
             <div className="row mb-2">
                 <div className="col text-center">
-                    <DateSelector date={props.date} />
+                    <DateSelector 
+                        date={props.date} 
+                        handleClickDateBack={props.handleClickDateBack}
+                    />
                 </div>
             </div>
             <div className="row">
@@ -36,7 +39,7 @@ function DateSelector(props) {
     console.log(props.date)
     return (
         <div className="date-selector">
-                <button className="date-back"> {"<"} </button>
+                <button className="date-back" onClick={props.handleClickDateBack}> {"<"} </button>
 
                 <button className="date-selector-btn">
                     <h4>{props.date}</h4>

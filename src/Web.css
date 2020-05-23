@@ -5,6 +5,5 @@
 @media all and (min-width: 376px) {
     .record-card {
         width: 250px;
-        cursor: pointer;
     }
 }

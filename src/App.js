@@ -47,6 +47,7 @@ export default class App extends Component {
 
   // Click one day back
   handleClickDateBack = () => {
+    console.log('hi')
     let {year, month, day} = this.state
     let daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
     
@@ -109,7 +110,12 @@ export default class App extends Component {
       <div className="container">
 
           <div className="col">
-            <Display records={this.state.data} date={this.state.today} mode={this.state.mode}/>
+            <Display 
+              records={this.state.data} 
+              date={this.state.today} 
+              mode={this.state.mode}
+              handleClickDateBack={this.handleClickDateBack}
+            />
           </div>
 
       </div>
