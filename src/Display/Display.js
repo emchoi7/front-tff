@@ -10,7 +10,11 @@ export default function Display(props) {
     return (
         <div className="display container">
             <div className="row">
-                <Daily records={props.records} date={props.date}/>
+                <Daily 
+                    records={props.records} 
+                    date={props.date}
+                    handleClickDateBack={props.handleClickDateBack}
+                />
             </div>
         </div>
     )

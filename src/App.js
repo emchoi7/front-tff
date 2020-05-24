@@ -24,7 +24,8 @@ export default class App extends Component {
   // 3. Get the corresponding data
   componentWillMount = () => { 
     const date = new Date("2019-12-30");
-    const dateStr = date.toDateString();
+    const dateStr = date.toISOString().split('T')[0];
+    console.log(dateStr);
     const year = String(date.getFullYear());
     const month = String(date.getMonth()+1);
     const day = String(date.getDate()+1);
@@ -47,14 +48,13 @@ export default class App extends Component {
 
   // Click one day back
   handleClickDateBack = () => {
-    console.log('hi')
     let {year, month, day} = this.state
     let daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
-    
+    month = Number(month)
     day = Number(day);
     if(day - 1 < 1) {
       month = Number(month);
-      if(month - 1 < 1) {
+      if(month - 1 < 0) {
         month = "12";
         year = Number(year) - 1;
       } else {
@@ -73,17 +73,17 @@ export default class App extends Component {
         }
       }
 
-      day = daysInMonth[month];
+      day = daysInMonth[month-1];
       day = String(day);
       month = String(month);
       year = String(year);
     } else {
       day = day - 1;
     }
-
     const dateStr = year + '-' + month + '-' + day;
     const date = new Date(dateStr);
-    const formattedDateStr = date.toDateString();
+    const formattedDateStr = date.toISOString().split('T')[0];
+    console.log(dateStr, formattedDateStr);
     const todaysData = recordsData.filter(
       record => record.year === year 
       && record.month === month 

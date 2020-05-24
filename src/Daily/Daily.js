@@ -36,10 +36,12 @@ export default function Daily(props) {
 }
 
 function DateSelector(props) {
-    console.log(props.date)
     return (
         <div className="date-selector">
-                <button className="date-back" onClick={props.handleClickDateBack}> {"<"} </button>
+                <button 
+                    className="date-back" 
+                    onClick={props.handleClickDateBack}
+                > {"<"} </button>
 
                 <button className="date-selector-btn">
                     <h4>{props.date}</h4>
