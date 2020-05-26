@@ -9,7 +9,7 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      today: "",
+      currentDate: new Date(),
       year: "",
       month: "",
       day: "",
@@ -19,28 +19,27 @@ export default class App extends Component {
   }
 
   // When the app loads, I want it to 
-  // 1. Get today's date
+  // 1. Get currentDate's date
   // 2. Get year, month, day from date
   // 3. Get the corresponding data
   componentWillMount = () => { 
     const date = new Date("2019-12-30");
     const dateStr = date.toISOString().split('T')[0];
-    console.log(dateStr);
     const year = String(date.getFullYear());
     const month = String(date.getMonth()+1);
     const day = String(date.getDate()+1);
-    const todaysData = recordsData.filter(
+    const currentData = recordsData.filter(
       record => record.year === year 
       && record.month === month 
       && record.day === day
     );
     this.setState(() => {
       return {
-        today: dateStr,
+        currentDate: date,
         year,
         month,
         day,
-        data: todaysData
+        data: currentData
       }
     });
 
@@ -62,28 +61,29 @@ export default class App extends Component {
         daysInMonth[1] = 29;
       }
     }
-    month = Number(month)
+    month = Number(month)-1;
     day = Number(day);
+
     if(day - 1 < 1) {
       if(month - 1 < 0) {
-        month = "12";
+        month = 11;
         year = Number(year) - 1;
       } else {
         month = month - 1
       }
       
-      day = daysInMonth[month-1];
-      day = String(day);
-      month = String(month);
-      year = String(year);
+      day = daysInMonth[month];
+      
     } else {
       day = day - 1;
     }
+    day = String(day);
+    month = String(month + 1);
+    year = String(year);
     const dateStr = year + '-' + month + '-' + day;
     const date = new Date(dateStr);
     const formattedDateStr = date.toISOString().split('T')[0];
-    console.log(dateStr, formattedDateStr);
-    const todaysData = recordsData.filter(
+    const currentData = recordsData.filter(
       record => record.year === year 
       && record.month === month 
       && record.day === day
@@ -91,11 +91,11 @@ export default class App extends Component {
 
     this.setState(() => {
       return {
-        today: formattedDateStr,
+        currentDate: date,
         year,
         month,
         day,
-        data: todaysData
+        data: currentData
       }
     });
   }
@@ -125,20 +125,18 @@ export default class App extends Component {
       } else {
         monthNum = monthNum + 1
       }
-      day = "1";
-      month = String(monthNum + 1);
-      year = String(year);
+      day = 1;
     } else {
       day = day + 1;
     }
-
+    day = String(day);
+    month = String(monthNum + 1);
+    year = String(year);
     
     const dateStr = year + '-' + month + '-' + day;
-    console.log('next',dateStr, day, month, daysInMonth[monthNum]);
-
     const date = new Date(dateStr);
     const formattedDateStr = date.toISOString().split('T')[0];
-    const todaysData = recordsData.filter(
+    const currentData = recordsData.filter(
       record => record.year === year 
       && record.month === month 
       && record.day === day
@@ -146,16 +144,19 @@ export default class App extends Component {
 
     this.setState(() => {
       return {
-        today: formattedDateStr,
+        currentDate: date,
         year,
         month,
         day,
-        data: todaysData
+        data: currentData
       }
     });
   }
 
-  // Click DateSelector
+  // Handle DatePicker
+  handleChangeDatePicker = (date) => {
+    console.log('hi', date);
+  }
 
   render() {
     return (
@@ -164,10 +165,11 @@ export default class App extends Component {
           <div className="col">
             <Display 
               records={this.state.data} 
-              date={this.state.today} 
+              date={this.state.currentDate} 
               mode={this.state.mode}
               handleClickDateBack={this.handleClickDateBack}
               handleClickDateNext={this.handleClickDateNext}
+              handleChangeDatePicker={this.handleChangeDatePicker}
             />
           </div>
 

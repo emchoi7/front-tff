@@ -3,27 +3,56 @@
     Props are passed to DateSelector and Record from Daily
     Record components are put into an array 
 */
-import React from 'react';
+import React, {Component} from 'react';
 import '../colors.css';
+// Import datepicker for DateSelector
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 // Clicking on Record is only a rendering change so... Fcn should stay in the Daily component? Or Record component?
-export default function Daily(props) {
-    const records = props.records.map((record, index) => <Record 
-            key={index}
-            score={record.score}
-            time={record.time}
-            notes={record.text}
-        />
-    );
+export default class Daily extends Component {
+    constructor() {
+        super();
+        this.state = {
+            showDatePicker: false,
+            showRecordDetailsKey: -1
+        };
+    }
 
-    return (
-        <div className="container">
+    handleClickDateSelector = () => {
+        this.setState(() => {
+            return {
+                showDatePicker: !this.state.showDatePicker
+            }
+        });
+    }
+
+    render() {
+
+        const records = this.props.records.map((record, index) => 
+            {
+                // if(this.state.showRecordDetailsKey === record.time) {
+                //     return 
+                // }
+                return <Record 
+                    key={record.time}
+                    score={record.score}
+                    time={record.time}
+                    notes={record.text}
+                />
+            }
+        );
+        
+        return (
+            <div className="container">
             <div className="row mb-2">
                 <div className="col text-center">
                     <DateSelector 
-                        date={props.date} 
-                        handleClickDateBack={props.handleClickDateBack}
-                        handleClickDateNext={props.handleClickDateNext}
+                        date={this.props.date} 
+                        handleClickDateBack={this.props.handleClickDateBack}
+                        handleClickDateNext={this.props.handleClickDateNext}
+                        handleClickDateSelector={this.handleClickDateSelector}
+                        showDatePicker={this.state.showDatePicker}
                     />
                 </div>
             </div>
@@ -33,8 +62,10 @@ export default function Daily(props) {
                 </div>
             </div>
         </div>
-    )
+        )
+    }
 }
+
 
 function DateSelector(props) {
     return (
@@ -44,8 +75,8 @@ function DateSelector(props) {
                     onClick={props.handleClickDateBack}
                 > {"<"} </button>
 
-                <button className="date-selector-btn">
-                    <h4>{props.date}</h4>
+                <button className="date-selector-btn" onClick={props.handleClickDateSelector}>
+                    <h4>{props.date.toISOString().split('T')[0]}</h4>
                 </button>
 
                 <button 

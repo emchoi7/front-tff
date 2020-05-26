@@ -67,7 +67,7 @@ const recordsData = [
         "year": "2019",
         "day": "30",
         "month": "12",
-        "time": "12:24:00",
+        "time": "12:23:23",
         "score": 4.3,
         "text": ""
     },
