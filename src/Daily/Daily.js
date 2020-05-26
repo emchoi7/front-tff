@@ -23,6 +23,7 @@ export default function Daily(props) {
                     <DateSelector 
                         date={props.date} 
                         handleClickDateBack={props.handleClickDateBack}
+                        handleClickDateNext={props.handleClickDateNext}
                     />
                 </div>
             </div>
@@ -47,7 +48,10 @@ function DateSelector(props) {
                     <h4>{props.date}</h4>
                 </button>
 
-                <button className="date-next"> {">"} </button>
+                <button 
+                    className="date-next"
+                    onClick={props.handleClickDateNext}
+                > {">"} </button>
         </div>
     )
 }

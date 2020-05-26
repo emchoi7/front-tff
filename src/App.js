@@ -50,29 +50,28 @@ export default class App extends Component {
   handleClickDateBack = () => {
     let {year, month, day} = this.state
     let daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
+    // Deal with day based on leap-year or not 
+    if(year%4 === 0) {
+      if(year%100 === 0) {
+        if(year%400 !== 0) {
+          // Leap Year
+          daysInMonth[1] = 29;
+        }
+      } else {
+        // Leap Year
+        daysInMonth[1] = 29;
+      }
+    }
     month = Number(month)
     day = Number(day);
     if(day - 1 < 1) {
-      month = Number(month);
       if(month - 1 < 0) {
         month = "12";
         year = Number(year) - 1;
       } else {
         month = month - 1
       }
-      // Deal with day based on leap-year or not 
-      if(year%4 === 0) {
-        if(year%100 === 0) {
-          if(year%400 !== 0) {
-            // Leap Year
-            daysInMonth[1] = 29;
-          }
-        } else {
-          // Leap Year
-          daysInMonth[1] = 29;
-        }
-      }
-
+      
       day = daysInMonth[month-1];
       day = String(day);
       month = String(month);
@@ -102,43 +101,43 @@ export default class App extends Component {
   }
 
   // Click one day next
-  handleClickDateBack = () => {
+  handleClickDateNext = () => {
     let {year, month, day} = this.state
     let daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
-    month = Number(month)
-    day = Number(day);
-    if(day - 1 < 1) {
-      month = Number(month);
-      if(month - 1 < 0) {
-        month = "12";
-        year = Number(year) - 1;
-      } else {
-        month = month - 1
-      }
-      // Deal with day based on leap-year or not 
-      if(year%4 === 0) {
-        if(year%100 === 0) {
-          if(year%400 !== 0) {
-            // Leap Year
-            daysInMonth[1] = 29;
-          }
-        } else {
+    if(year%4 === 0) {
+      if(year%100 === 0) {
+        if(year%400 !== 0) {
           // Leap Year
           daysInMonth[1] = 29;
         }
+      } else {
+        // Leap Year
+        daysInMonth[1] = 29;
       }
-
-      day = daysInMonth[month-1];
-      day = String(day);
-      month = String(month);
+    }
+    
+    let monthNum = Number(month) - 1
+    day = Number(day);
+    if(day + 1 > daysInMonth[monthNum]) {
+      if(monthNum + 1 > 11) {
+        monthNum = 0;
+        year = Number(year) + 1;
+      } else {
+        monthNum = monthNum + 1
+      }
+      day = "1";
+      month = String(monthNum + 1);
       year = String(year);
     } else {
-      day = day - 1;
+      day = day + 1;
     }
+
+    
     const dateStr = year + '-' + month + '-' + day;
+    console.log('next',dateStr, day, month, daysInMonth[monthNum]);
+
     const date = new Date(dateStr);
     const formattedDateStr = date.toISOString().split('T')[0];
-    console.log(dateStr, formattedDateStr);
     const todaysData = recordsData.filter(
       record => record.year === year 
       && record.month === month 
@@ -168,6 +167,7 @@ export default class App extends Component {
               date={this.state.today} 
               mode={this.state.mode}
               handleClickDateBack={this.handleClickDateBack}
+              handleClickDateNext={this.handleClickDateNext}
             />
           </div>
 

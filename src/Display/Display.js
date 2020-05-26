@@ -14,6 +14,7 @@ export default function Display(props) {
                     records={props.records} 
                     date={props.date}
                     handleClickDateBack={props.handleClickDateBack}
+                    handleClickDateNext={props.handleClickDateNext}
                 />
             </div>
         </div>
