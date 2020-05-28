@@ -5,9 +5,6 @@
 */
 import React, {Component} from 'react';
 import '../colors.css';
-// Import datepicker for DateSelector
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 
 // Clicking on Record is only a rendering change so... Fcn should stay in the Daily component? Or Record component?
 export default class Daily extends Component {
@@ -20,26 +17,48 @@ export default class Daily extends Component {
     }
 
     handleClickDateSelector = () => {
-        this.setState(() => {
-            return {
-                showDatePicker: !this.state.showDatePicker
-            }
+        this.setState({
+            showDatePicker: !this.state.showDatePicker
         });
     }
 
-    render() {
+    handleClickRecord = (key) => {
+        if(this.state.showRecordDetailsKey !== key) {
+            this.setState({
+                showRecordDetailsKey: key
+            });
+        } else {
+            this.setState({
+                showRecordDetailsKey: -1
+            });
+        }
 
-        const records = this.props.records.map((record, index) => 
+    }
+
+    render() {
+        console.log(this.state.showRecordDetailsKey);
+        const records = this.props.records.map(record => 
             {
-                // if(this.state.showRecordDetailsKey === record.time) {
-                //     return 
-                // }
-                return <Record 
-                    key={record.time}
-                    score={record.score}
-                    time={record.time}
-                    notes={record.text}
-                />
+                if(this.state.showRecordDetailsKey === record.time) {
+                    console.log(record.time)
+                    return <Record 
+                        key={record.time}
+                        score={record.score}
+                        time={record.time}
+                        notes={record.text}
+                        showDetails={true}
+                        handleClickRecord={this.handleClickRecord}
+                    />
+                } else {
+                    return <Record 
+                        key={record.time}
+                        score={record.score}
+                        time={record.time}
+                        notes={record.text}
+                        showDetails={false}
+                        handleClickRecord={this.handleClickRecord}
+                    />
+                }
             }
         );
         
@@ -124,14 +143,22 @@ function Record(props) {
     classNames.push(colorClass);
     const classes = classNames.join(' ');
 
+    let details = null;
+    if(props.showDetails) {
+        details = (<div className="row">
+            <p>{props.notes}</p>
+        </div>);
+    }
+
     return (
-        <div className={classes}>
+        <div className={classes} onClick={props.handleClickRecord.bind(this, props.time)}>
                 <div className="row">
                     <p className="text-center col m-1">{props.time}</p>
                 </div>
                 <div className="row">
                     <h3 className="text-center col mt-0">{hungerLevel}</h3>
                 </div>
+                {details}
         </div>
     )
 }
