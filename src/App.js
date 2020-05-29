@@ -23,11 +23,11 @@ export default class App extends Component {
   // 2. Get year, month, day from date
   // 3. Get the corresponding data
   componentWillMount = () => { 
-    const date = new Date("2019-12-30");
+    const date = new Date("2019-12-30 00:00");
     const dateStr = date.toISOString().split('T')[0];
     const year = String(date.getFullYear());
     const month = String(date.getMonth()+1);
-    const day = String(date.getDate()+1);
+    const day = String(date.getDate());
     const currentData = recordsData.filter(
       record => record.year === year 
       && record.month === month 
@@ -80,9 +80,10 @@ export default class App extends Component {
     day = String(day);
     month = String(month + 1);
     year = String(year);
-    const dateStr = year + '-' + month + '-' + day;
+
+    const dateStr = year + '-' + month + '-' + day + ' 00:00';
     const date = new Date(dateStr);
-    const formattedDateStr = date.toISOString().split('T')[0];
+
     const currentData = recordsData.filter(
       record => record.year === year 
       && record.month === month 
@@ -132,36 +133,46 @@ export default class App extends Component {
     day = String(day);
     month = String(monthNum + 1);
     year = String(year);
-    
-    const dateStr = year + '-' + month + '-' + day;
+    const dateStr = year + '-' + month + '-' + day + ' 00:00';
     const date = new Date(dateStr);
-    const formattedDateStr = date.toISOString().split('T')[0];
+
     const currentData = recordsData.filter(
       record => record.year === year 
       && record.month === month 
       && record.day === day
     );
 
-    this.setState(() => {
-      return {
+    this.setState({
         currentDate: date,
         year,
         month,
         day,
         data: currentData
-      }
-    });
+      });
   }
 
   // Handle DatePicker
-  handleChangeDatePicker = (date) => {
-    console.log('hi', date);
+  handleChangeDatePicker = date => {
+
+    if(date !== -1 && date !== undefined) {
+      const day = String(date.getDate());
+      const month = String(date.getMonth()+1);
+      const year = String(date.getFullYear());
+      const currentData = recordsData.filter(
+        record => record.year === year 
+        && record.month === month 
+        && record.day === day
+      );
+      this.setState({
+        currentDate: date,
+        data: currentData
+      });
+    }
   }
 
   render() {
     return (
       <div className="container">
-
           <div className="col">
             <Display 
               records={this.state.data} 
@@ -170,6 +181,7 @@ export default class App extends Component {
               handleClickDateBack={this.handleClickDateBack}
               handleClickDateNext={this.handleClickDateNext}
               handleChangeDatePicker={this.handleChangeDatePicker}
+              handleSelectDatePicker={this.handleSelectDatePicker}
             />
           </div>
 

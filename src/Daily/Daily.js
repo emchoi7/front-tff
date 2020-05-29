@@ -5,22 +5,24 @@
 */
 import React, {Component} from 'react';
 import '../colors.css';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
 // Clicking on Record is only a rendering change so... Fcn should stay in the Daily component? Or Record component?
 export default class Daily extends Component {
     constructor() {
         super();
         this.state = {
-            showDatePicker: false,
+            // showDatePicker: false,
             showRecordDetailsKey: -1
         };
     }
 
-    handleClickDateSelector = () => {
-        this.setState({
-            showDatePicker: !this.state.showDatePicker
-        });
-    }
+    // handleClickDateSelector = () => {
+    //     this.setState({
+    //         showDatePicker: !this.state.showDatePicker
+    //     });
+    // }
 
     handleClickRecord = (key) => {
         if(this.state.showRecordDetailsKey !== key) {
@@ -36,7 +38,6 @@ export default class Daily extends Component {
     }
 
     render() {
-        console.log(this.state.showRecordDetailsKey);
         const records = this.props.records.map(record => 
             {
                 if(this.state.showRecordDetailsKey === record.time) {
@@ -70,8 +71,8 @@ export default class Daily extends Component {
                         date={this.props.date} 
                         handleClickDateBack={this.props.handleClickDateBack}
                         handleClickDateNext={this.props.handleClickDateNext}
-                        handleClickDateSelector={this.handleClickDateSelector}
-                        showDatePicker={this.state.showDatePicker}
+                        handleChangeDatePicker={this.props.handleChangeDatePicker}
+                        handleSelectDatePicker={this.props.handleSelectDatePicker}
                     />
                 </div>
             </div>
@@ -94,10 +95,14 @@ function DateSelector(props) {
                     onClick={props.handleClickDateBack}
                 > {"<"} </button>
 
-                <button className="date-selector-btn" onClick={props.handleClickDateSelector}>
+                {/* <button className="date-selector-btn" onClick={props.handleClickDateSelector}>
                     <h4>{props.date.toISOString().split('T')[0]}</h4>
-                </button>
-
+                </button> */}
+                <DatePicker
+                    selected={props.date}
+                    onChange={props.handleChangeDatePicker}
+                    onSelect={props.handleSelectDatePicker}
+                />
                 <button 
                     className="date-next"
                     onClick={props.handleClickDateNext}
