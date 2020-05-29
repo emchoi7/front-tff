@@ -41,7 +41,6 @@ export default class Daily extends Component {
         const records = this.props.records.map(record => 
             {
                 if(this.state.showRecordDetailsKey === record.time) {
-                    console.log(record.time)
                     return <Record 
                         key={record.time}
                         score={record.score}
@@ -94,10 +93,6 @@ function DateSelector(props) {
                     className="date-back" 
                     onClick={props.handleClickDateBack}
                 > {"<"} </button>
-
-                {/* <button className="date-selector-btn" onClick={props.handleClickDateSelector}>
-                    <h4>{props.date.toISOString().split('T')[0]}</h4>
-                </button> */}
                 <DatePicker
                     selected={props.date}
                     onChange={props.handleChangeDatePicker}
@@ -150,7 +145,7 @@ function Record(props) {
 
     let details = null;
     if(props.showDetails) {
-        details = (<div className="row">
+        details = (<div className="row record-card-add">
             <p>{props.notes}</p>
         </div>);
     }
