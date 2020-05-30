@@ -16,7 +16,6 @@ export default function Display(props) {
                     handleClickDateBack={props.handleClickDateBack}
                     handleClickDateNext={props.handleClickDateNext}
                     handleChangeDatePicker={props.handleChangeDatePicker}
-                    handleSelectDatePicker={props.handleSelectDatePicker}
                 />
             </div>
         </div>

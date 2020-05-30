@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Display from './Display/Display';
 import recordsData from './data/data';
+import AddModal from './AddRecord/AddModal';
 import './App.css';
 import './Mobile.css';
 import './Web.css';
@@ -14,7 +15,8 @@ export default class App extends Component {
       month: "",
       day: "",
       mode: "daily",
-      data: []
+      data: [],
+      showAddRecordsModal: false
     };
   }
 
@@ -24,7 +26,6 @@ export default class App extends Component {
   // 3. Get the corresponding data
   componentWillMount = () => { 
     const date = new Date("2019-12-30 00:00");
-    const dateStr = date.toISOString().split('T')[0];
     const year = String(date.getFullYear());
     const month = String(date.getMonth()+1);
     const day = String(date.getDate());
@@ -174,6 +175,7 @@ export default class App extends Component {
     return (
       <div className="container">
           <div className="col">
+            <AddModal />
             <Display 
               records={this.state.data} 
               date={this.state.currentDate} 
@@ -181,7 +183,6 @@ export default class App extends Component {
               handleClickDateBack={this.handleClickDateBack}
               handleClickDateNext={this.handleClickDateNext}
               handleChangeDatePicker={this.handleChangeDatePicker}
-              handleSelectDatePicker={this.handleSelectDatePicker}
             />
           </div>
 

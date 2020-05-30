@@ -13,16 +13,9 @@ export default class Daily extends Component {
     constructor() {
         super();
         this.state = {
-            // showDatePicker: false,
             showRecordDetailsKey: -1
         };
     }
-
-    // handleClickDateSelector = () => {
-    //     this.setState({
-    //         showDatePicker: !this.state.showDatePicker
-    //     });
-    // }
 
     handleClickRecord = (key) => {
         if(this.state.showRecordDetailsKey !== key) {
@@ -71,7 +64,6 @@ export default class Daily extends Component {
                         handleClickDateBack={this.props.handleClickDateBack}
                         handleClickDateNext={this.props.handleClickDateNext}
                         handleChangeDatePicker={this.props.handleChangeDatePicker}
-                        handleSelectDatePicker={this.props.handleSelectDatePicker}
                     />
                 </div>
             </div>
