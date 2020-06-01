@@ -23,6 +23,9 @@ export default class AddModal extends Component {
     }
 
     render() {
+        const date = new Date();
+        const dateStr = date.toDateString();
+        const timeStr = date.toTimeString().split(':').slice(0,2).join(':');
         let hungerLevel = 'Neutral'
         let colorClass = 'hunger-blue' 
         if(this.state.score >= 0 && this.state.score < 1) {
@@ -54,12 +57,15 @@ export default class AddModal extends Component {
             colorClass = 'hunger-red';
         }
         return (
-            <div className={colorClass + ' container text-center'}>
+            <div className={colorClass + ' container text-center py-2 my-2 add-modal'}>
                 <div className="row">
-                    <h4 className="col">Date here</h4>
+                    <h5 className="col">{dateStr}</h5>
                 </div>
                 <div className="row">
-                    <h2 className="col">Time here</h2>
+                    <h5 className="col">{timeStr}</h5>
+                </div>
+                <div className="row">
+                    <h3 className="col">{hungerLevel}</h3>
                 </div>
                 <form>
                     <div className="row">
@@ -73,33 +79,18 @@ export default class AddModal extends Component {
                             onChange={this.handleSliderChange}
                         ></input></div>
                     </div>
-                    <div classname="row">
+                    <div className="row">
                         <div className="col"><input
                         type="text"
                         value={this.state.text}
-                        className="col"
+                        className="col add-text"
                     ></input></div>
                     </div>
-
+                    <button
+                        className="save-record-btn my-2"
+                    >Save Record</button>
                 </form>
             </div>
         )
     }
-}
-
-
-function TextField() {
-    return (
-        <div>
-            
-        </div>
-    )
-}
-
-function SaveButton() {
-    return (
-        <div>
-            
-        </div>
-    )
 }

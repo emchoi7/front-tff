@@ -3,10 +3,13 @@
 */
 import React from 'react';
 
-export default function AddButton() {
+export default function AddButton(props) {
     return (
-        <button>
-            +
+        <button
+            className="add-button"
+            onClick={props.handleClickAddButton}
+        >
+            Add Record
         </button>
     )
 }

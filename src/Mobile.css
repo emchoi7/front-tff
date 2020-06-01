@@ -3,14 +3,16 @@
 }
 
 @media all and (max-width: 375px) {
-    /* Font Sizes */
-    p {
-
-    }
     .display {
         width: 100vw;
     }
     .record-card {
         width: 200px;
+    }
+    /* .add-modal {
+        width: 250px;
+    } */
+    .score-slider {
+        width: 150px;
     }
 }

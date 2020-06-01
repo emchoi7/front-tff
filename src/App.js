@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Display from './Display/Display';
 import recordsData from './data/data';
 import AddModal from './AddRecord/AddModal';
+import AddButton from './AddRecord/AddButton';
 import './App.css';
 import './Mobile.css';
 import './Web.css';
@@ -46,9 +47,19 @@ export default class App extends Component {
 
   }
 
+  handleClickAddButton = () => {
+    this.setState({
+      showAddRecordsModal: !this.state.showAddRecordsModal
+    });
+  }
+
   // Click one day back
   handleClickDateBack = () => {
-    let {year, month, day} = this.state
+    let {currentDate} = this.state
+    let year = currentDate.getFullYear();
+    let month = currentDate.getMonth();
+    let day = currentDate.getDate();
+
     let daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
     // Deal with day based on leap-year or not 
     if(year%4 === 0) {
@@ -62,8 +73,6 @@ export default class App extends Component {
         daysInMonth[1] = 29;
       }
     }
-    month = Number(month)-1;
-    day = Number(day);
 
     if(day - 1 < 1) {
       if(month - 1 < 0) {
@@ -104,7 +113,11 @@ export default class App extends Component {
 
   // Click one day next
   handleClickDateNext = () => {
-    let {year, month, day} = this.state
+    let {currentDate} = this.state
+    let year = currentDate.getFullYear();
+    let month = currentDate.getMonth();
+    let day = currentDate.getDate();
+    
     let daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
     if(year%4 === 0) {
       if(year%100 === 0) {
@@ -118,21 +131,19 @@ export default class App extends Component {
       }
     }
     
-    let monthNum = Number(month) - 1
-    day = Number(day);
-    if(day + 1 > daysInMonth[monthNum]) {
-      if(monthNum + 1 > 11) {
-        monthNum = 0;
+    if(day + 1 > daysInMonth[month]) {
+      if(month + 1 > 11) {
+        month = 0;
         year = Number(year) + 1;
       } else {
-        monthNum = monthNum + 1
+        month = month + 1
       }
       day = 1;
     } else {
       day = day + 1;
     }
     day = String(day);
-    month = String(monthNum + 1);
+    month = String(month + 1);
     year = String(year);
     const dateStr = year + '-' + month + '-' + day + ' 00:00';
     const date = new Date(dateStr);
@@ -173,21 +184,26 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="container">
-          <div className="col">
-            <AddModal />
-            <Display 
-              records={this.state.data} 
-              date={this.state.currentDate} 
-              mode={this.state.mode}
-              handleClickDateBack={this.handleClickDateBack}
-              handleClickDateNext={this.handleClickDateNext}
-              handleChangeDatePicker={this.handleChangeDatePicker}
-            />
+      <div>
+        <div className="container">
+          <div className="row center-row">
+            <div className="col">
+              {/* <AddButton handleClickAddButton={this.handleClickAddButton}/> */}
+            </div>
+            <div className="col py-3 center-col">
+              <Display 
+                records={this.state.data} 
+                date={this.state.currentDate} 
+                mode={this.state.mode}
+                handleClickDateBack={this.handleClickDateBack}
+                handleClickDateNext={this.handleClickDateNext}
+                handleChangeDatePicker={this.handleChangeDatePicker}
+              />
+            </div>
+            <div className="col"></div>
           </div>
-
+        </div>
       </div>
-
     )
   }
 }

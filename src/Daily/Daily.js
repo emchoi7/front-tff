@@ -4,6 +4,7 @@
     Record components are put into an array 
 */
 import React, {Component} from 'react';
+import AddModal from '../AddRecord/AddModal';
 import '../colors.css';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
@@ -54,6 +55,22 @@ export default class Daily extends Component {
                 }
             }
         );
+
+        // let addModal = null;
+        // if(
+        //     // this.props.date.getMonth() === new Date().getMonth() 
+        //     // && this.props.date.getDate() === new Date().getDate()
+        //     // && this.props.date.getFullYear() === new Date().getFullYear() 
+        //     this.props.date.getMonth() === 11
+        //     && this.props.date.getDate() === 30
+        //     && this.props.date.getFullYear() === 2019
+
+        // ) {
+        //     addModal = 
+        //     (<div className="row">
+        //         <AddModal />
+        //     </div>);
+        // }
         
         return (
             <div className="container">
@@ -67,6 +84,7 @@ export default class Daily extends Component {
                     />
                 </div>
             </div>
+            {/* {addModal} */}
             <div className="row">
                 <div className="col text-center">
                     {records}
