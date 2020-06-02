@@ -3,6 +3,7 @@ import Display from './Display/Display';
 import recordsData from './data/data';
 import AddModal from './AddRecord/AddModal';
 import AddButton from './AddRecord/AddButton';
+import Nav from './Nav/Nav';
 import './App.css';
 import './Mobile.css';
 import './Web.css';
@@ -183,15 +184,10 @@ export default class App extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <div className="container">
-          <div className="row center-row">
-            <div className="col">
-              {/* <AddButton handleClickAddButton={this.handleClickAddButton}/> */}
-            </div>
-            <div className="col py-3 center-col">
-              <Display 
+    let centerCol = null;
+    if(mode === 'daily'){
+      centerCol = (
+        <Display 
                 records={this.state.data} 
                 date={this.state.currentDate} 
                 mode={this.state.mode}
@@ -199,6 +195,23 @@ export default class App extends Component {
                 handleClickDateNext={this.handleClickDateNext}
                 handleChangeDatePicker={this.handleChangeDatePicker}
               />
+      );
+    } else if (mode === 'add') {
+      centerCol = (
+        <AddModal 
+        />
+      );
+    }
+    return (
+      <div>
+        <div className="container">
+          <div className="row center-row">
+            <div className="col">
+              {/* <AddButton handleClickAddButton={this.handleClickAddButton}/> */}
+              <Nav />
+            </div>
+            <div className="col py-3 center-col">
+              {centerCol}
             </div>
             <div className="col"></div>
           </div>
