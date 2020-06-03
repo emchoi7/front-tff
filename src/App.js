@@ -185,7 +185,7 @@ export default class App extends Component {
 
   render() {
     let centerCol = null;
-    if(mode === 'daily'){
+    if(this.state.mode === 'daily'){
       centerCol = (
         <Display 
                 records={this.state.data} 
@@ -196,24 +196,29 @@ export default class App extends Component {
                 handleChangeDatePicker={this.handleChangeDatePicker}
               />
       );
-    } else if (mode === 'add') {
+    } else if (this.state.mode === 'add') {
       centerCol = (
         <AddModal 
         />
       );
     }
+
+
     return (
       <div>
         <div className="container">
           <div className="row center-row">
-            <div className="col">
+            {/* <div className="col"></div> */}
+            <div className="col-2 large-screen">
               {/* <AddButton handleClickAddButton={this.handleClickAddButton}/> */}
               <Nav />
             </div>
-            <div className="col py-3 center-col">
+            <div className="col-6 py-3 center-col">
+              {/* mobile-screen NavBar, showNav / Analysis */}
               {centerCol}
             </div>
-            <div className="col"></div>
+            <div className="col-4 large-screen"></div>
+            {/* <div className="col"></div> */}
           </div>
         </div>
       </div>

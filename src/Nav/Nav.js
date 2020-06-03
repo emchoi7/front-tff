@@ -2,15 +2,14 @@ import React from 'react'
 
 export default function Nav() {
     return (
-        <nav>
-            <div className="container">
-                <li>
-                    <ul className="row"><h3>Today</h3></ul>
-                    <ul className="row"><h3>Calendar</h3></ul>
-                    <ul className="row"><h3>Settings</h3></ul>
-                    <ul className="row"><h3>Add Record</h3></ul>
-                </li>
-            </div>
+        <nav className="container my-5 left-align">
+            <ul>
+                <li className="row my-2"><h4>Today</h4></li>
+                <li className="row my-2"><h4>Calendar</h4></li>
+                <li className="row my-2"><h4>Settings</h4></li>
+                <li className="row my-2"><h4>Add Record</h4></li>
+                <li className="row my-2"><h4>Logout</h4></li>
+            </ul>
         </nav>
     )
 }

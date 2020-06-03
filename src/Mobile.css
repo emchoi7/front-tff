@@ -15,4 +15,7 @@
     .score-slider {
         width: 150px;
     }
+    .large-screen {
+        display: none
+    }
 }
