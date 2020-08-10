@@ -4,7 +4,7 @@
     Depending on the App component's state, it renders Daily or Monthly component.
 */
 import React from 'react';
-import Daily from '../Daily/Daily';
+import Daily from '../../Daily/Daily';
 
 export default function Display(props) {
     return (
