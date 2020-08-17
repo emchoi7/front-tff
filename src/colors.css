@@ -1,27 +1,27 @@
 :root{
-    --red: #E88155;
-    --orange: #EEB05A;
-    --yellow: #F4DE5F;
-    --green: #B2D87C;
-    --blue: #70D399;
+    --hunger-level-1: #E88155;
+    --hunger-level-2: #EEB05A;
+    --hunger-level-3: #F4DE5F;
+    --hunger-level-4: #B2D87C;
+    --hunger-level-5: #70D399;
 }
 
-.hunger-red {
-    background-color: var(--red);
+.hunger-level-1 {
+    background-color: var(--hunger-level-1);
 }
 
-.hunger-orange {
-    background-color: var(--orange);
+.hunger-level-2 {
+    background-color: var(--hunger-level-2);
 }
 
-.hunger-yellow {
-    background-color: var(--yellow);
+.hunger-level-3 {
+    background-color: var(--hunger-level-3);
 }
 
-.hunger-green {
-    background-color: var(--green);
+.hunger-level-4 {
+    background-color: var(--hunger-level-4);
 }
 
-.hunger-blue {
-    background-color: var(--blue);
+.hunger-level-5 {
+    background-color: var(--hunger-level-5);
 }

@@ -1,0 +1,18 @@
+.Button {
+    background-color: transparent;
+    border: none;
+}
+
+.MobileMenu {
+    color: #777;
+}
+
+.Arrow {
+}
+
+@media all and (min-width: 600px) {
+    .MobileMenu {
+        display: none;
+    }
+}
+

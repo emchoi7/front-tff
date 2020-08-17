@@ -8,7 +8,7 @@ import React, {Component} from 'react';
 import Record from '../../components/Record/Record';
 import DateSelector from '../../components/DateSelector/DateSelector';
 
-import '../colors.css';
+import '../../colors.css';
 import "react-datepicker/dist/react-datepicker.css";
 
 // Clicking on Record is only a rendering change so... Fcn should stay in the Daily component? Or Record component?

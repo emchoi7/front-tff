@@ -1,0 +1,6 @@
+.Record {
+    border-radius: 5px;
+    cursor: pointer;
+    width: 250px;
+    z-index: -1;
+}

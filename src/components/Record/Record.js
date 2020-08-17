@@ -1,41 +1,44 @@
 import React from 'react';
 
-function Record(props) {
+//CSS
+import classes from './Record.module.css';
+
+const Record = (props) => {
     let hungerLevel = 'Neutral';
-    let colorClass = 'hunger-blue';
-    let classNames = ['record-card', 'container', 'mb-3'];
+    let colorClass = 'hunger-level-5';
+    let classNames = [classes.Record, 'container', 'mb-3'];
 
     if(props.score >= 0 && props.score < 1) {
         hungerLevel = 'Starving';
-        colorClass = 'hunger-red';
+        colorClass = 'hunger-level-1';
     } else if(props.score >= 1 && props.score < 2) {
         hungerLevel = 'Famished';
-        colorClass = 'hunger-orange';
+        colorClass = 'hunger-level-2';
     } else if(props.score >= 2 && props.score < 3) {
         hungerLevel = 'Hungry';
-        colorClass = 'hunger-yellow';
+        colorClass = 'hunger-level-3';
     } else if(props.score >= 3 && props.score < 4) {
         hungerLevel = 'Peckish';
-        colorClass = 'hunger-green';
+        colorClass = 'hunger-level-4';
     } else if(props.score >= 4 && props.score < 5) {
         hungerLevel = 'Neutral';
-        colorClass = 'hunger-blue';
+        colorClass = 'hunger-level-5';
     } else if(props.score >= 5 && props.score < 6) {
         hungerLevel = 'Satiated';
-        colorClass = 'hunger-green';
+        colorClass = 'hunger-level-4';
     } else if(props.score >= 6 && props.score < 7) {
         hungerLevel = 'Full';
-        colorClass = 'hunger-yellow';
+        colorClass = 'hunger-level-3';
     } else if(props.score >= 7 && props.score < 8) {
         hungerLevel = 'Stuffed';
-        colorClass = 'hunger-orange';
+        colorClass = 'hunger-level-2';
     } else if(props.score >= 8 && props.score < 9) {
         hungerLevel = 'Bursting';
-        colorClass = 'hunger-red';
+        colorClass = 'hunger-level-1';
     }
 
     classNames.push(colorClass);
-    const classes = classNames.join(' ');
+    const classNamesStr = classNames.join(' ');
 
     let details = null;
     if(props.showDetails) {
@@ -46,7 +49,7 @@ function Record(props) {
     }
 
     return (
-        <div className={classes} onClick={props.handleClickRecord.bind(this, props.time)}>
+        <div className={classNamesStr} onClick={props.handleClickRecord.bind(this, props.time)}>
                 <div className="row">
                     <p className="text-center col m-1">{props.time}</p>
                 </div>

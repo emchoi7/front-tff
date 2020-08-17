@@ -1,23 +1,10 @@
-:root{
-    --web-width: 376px;
-}
 
 @media all and (min-width: 376px) {
-    .record-card {
-        width: 250px;
-    }
     /* .add-modal {
         width: 300px;
     } */
     .score-slider {
         width: 200px;
     }
-    .center-col {
-        border-style: solid;
-        border-left-width: .5px;
-        border-right-width: .5px;
-        border-top-width: 0px;
-        border-bottom-width: 0px;
-        border-color: #dddddd;
-    }
+    
 }

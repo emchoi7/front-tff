@@ -1,0 +1,15 @@
+.Main {
+    position: absolute;
+    top: 36px;
+    left: 200px;
+
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+@media all and (max-width: 599px) {
+    .Main {
+        left: 0px;
+    }
+}

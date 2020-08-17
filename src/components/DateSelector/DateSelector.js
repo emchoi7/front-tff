@@ -1,22 +1,25 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
 
+// Components
+import Button from '../UI/Button/Button';
+
 function DateSelector(props) {
     return (
         <div className="date-selector">
-                <button 
-                    className="date-back" 
+                <Button
+                    type={"Arrow"}
                     onClick={props.handleClickDateBack}
-                > {"<"} </button>
+                > <i class="fas fa-caret-left"></i> </Button>
                 <DatePicker
                     selected={props.date}
                     onChange={props.handleChangeDatePicker}
                     onSelect={props.handleSelectDatePicker}
                 />
-                <button 
-                    className="date-next"
+                <Button
+                    type={"Arrow"}
                     onClick={props.handleClickDateNext}
-                > {">"} </button>
+                > <i class="fas fa-caret-right"></i> </Button>
         </div>
     )
 }
