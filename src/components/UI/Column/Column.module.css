@@ -1,13 +1,19 @@
 .MainCenter {
-    min-height: 100vh;
+    /* min-height: 100vh; */
     border-style: solid;
     border-width: 0 .5px 0 .5px;
     border-color: #dddddd;
-}
+    height: auto;
+    width: auto;
+}   
 
 .MainRight {
     display: flex; 
     justify-content: center;
+}
+
+.NavigationLeft {
+
 }
 
 @media all and (max-width: 599px) {
@@ -16,5 +22,9 @@
     }
     .MainCenter {
         width: 100vw;
+        border: none;
+    }
+    .NavigationLeft {
+        display: none;
     }
 }

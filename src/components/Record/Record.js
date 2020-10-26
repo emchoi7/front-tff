@@ -6,7 +6,7 @@ import classes from './Record.module.css';
 const Record = (props) => {
     let hungerLevel = 'Neutral';
     let colorClass = 'hunger-level-5';
-    let classNames = [classes.Record, 'container', 'mb-3'];
+    let classNames = [classes.Record];//'container', 'mb-3'];
 
     if(props.score >= 0 && props.score < 1) {
         hungerLevel = 'Starving';

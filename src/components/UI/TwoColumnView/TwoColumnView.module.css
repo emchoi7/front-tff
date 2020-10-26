@@ -1,15 +1,22 @@
 .Main {
-    position: absolute;
-    top: 36px;
-    left: 200px;
-
     margin: 0;
-    padding: 0;
-    display: block;
+    padding: 5px 0 0 0;
+
+    /* position: absolute; */
+    /* margin-top: 36px;
+    margin-left: 200px;
+    width: auto; */
+    /* right: 0px;
+    bottom: 0px; */
+
+    /* width: 100%; */
+    /* width: calc(100% - 200px); */
+
 }
 
 @media all and (max-width: 599px) {
     .Main {
-        left: 0px;
+        /* left: 0px; */
+        /* width: auto */
     }
 }

@@ -1,10 +1,8 @@
-.NavigationContainer {
-    position: fixed;
-    width: 200px;
+.MainContent {
+    border: solid;
 }
 
 @media all and (max-width: 599px) {
-    .NavigationContainer {
-        display: none;
+    .MainContent{
     }
 }

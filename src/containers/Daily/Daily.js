@@ -8,6 +8,9 @@ import React, {Component} from 'react';
 import Record from '../../components/Record/Record';
 import DateSelector from '../../components/DateSelector/DateSelector';
 
+// CSS
+import classes from './Daily.module.css';
+
 import '../../colors.css';
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -75,24 +78,24 @@ export default class Daily extends Component {
         // }
         
         return (
-            <div className="container">
-            <div className="row mb-2">
-                <div className="col text-center">
-                    <DateSelector 
-                        date={this.props.date} 
-                        handleClickDateBack={this.props.handleClickDateBack}
-                        handleClickDateNext={this.props.handleClickDateNext}
-                        handleChangeDatePicker={this.props.handleChangeDatePicker}
-                    />
+            <div className={[classes.Daily].join(' ')}>
+                <div className="row mb-2">
+                    <div className="col text-center">
+                        <DateSelector 
+                            date={this.props.date} 
+                            handleClickDateBack={this.props.handleClickDateBack}
+                            handleClickDateNext={this.props.handleClickDateNext}
+                            handleChangeDatePicker={this.props.handleChangeDatePicker}
+                        />
+                    </div>
+                </div>
+                {/* {addModal} */}
+                <div className="row">
+                    <div className="col text-center">
+                        {records}
+                    </div>
                 </div>
             </div>
-            {/* {addModal} */}
-            <div className="row">
-                <div className="col text-center">
-                    {records}
-                </div>
-            </div>
-        </div>
         )
     }
 }

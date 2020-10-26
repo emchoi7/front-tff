@@ -1,21 +1,25 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 
 // HOC
 import Layout from './hoc/Layout/Layout';
 
 // Container
 import DailyDisplay from './containers/DailyDisplay/DailyDisplay';
+import MonthlyDisplay from './containers/MonthlyDisplay/MonthlyDisplay';
 
-import './App.css';
-import './Mobile.css';
-import './Web.css';
+// CSS
+import classes from './App.module.css';
 
 const App = () => {
   return (
-      <div>
+      <div className={classes.App}>
         <Layout>
-          <DailyDisplay />
+          <Switch>
+            <Route exact path="/" component={DailyDisplay} />
+            <Route path="/calendar" component={MonthlyDisplay} />
+            <Route path="/settings"><p>Settings</p></Route>
+          </Switch>
         </Layout>
       </div>
     );

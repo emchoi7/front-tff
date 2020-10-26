@@ -1,5 +1,8 @@
 import React from 'react';
 
+// HOC
+import Aux from '../../../hoc/Aux';
+
 // Components
 import Column from '../Column/Column';
 
@@ -8,20 +11,25 @@ import classes from './TwoColumnView.module.css'
 
 const twoColumnView = (props) => {
     return (
-        <div className={["container", classes.Main].join(' ')}>
-            <div className="row">
+        <Aux>
+        {/* <div className={["container", classes.Main].join(' ')}> */}
+            {/* <div className="row"> */}
+                {/* <Column customClasses={["Placeholder"]}/> */}
                 <Column 
                     customClasses={["MainCenter"]}
+                    colNum={5}
                 >
                     {props.mainContent}
                 </Column>
                 <Column 
                     customClasses={["MainRight"]}
+                    colNum={5}
                 >
                     {props.sideContent}
                 </Column>
-            </div>
-        </div>
+            {/* </div> */}
+        {/* </div> */}
+        </Aux>
     );
 }
 

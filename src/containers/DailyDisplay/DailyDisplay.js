@@ -11,7 +11,6 @@ import classes from './DailyDisplay.module.css';
 
 // Data
 import recordsData from '../../data/data';
-import twoColumnView from '../../components/UI/TwoColumnView/TwoColumnView';
 
 class DailyDisplay extends Component {
     state = {
@@ -97,12 +96,12 @@ class DailyDisplay extends Component {
             handleChangeDatePicker={this.handleChangeDatePicker}
         />);
         return (
-            <div className={classes.DailyDisplay}>
+            // <div className={classes.DailyDisplay}>
                 <TwoColumnView
                     mainContent={daily}
                     sideContent={"Side Content"}
                 />
-            </div>
+            // </div>
         );
     }
 };

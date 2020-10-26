@@ -7,6 +7,7 @@ import Aux from '../Aux';
 import ToolBar from '../../components/Navigation/ToolBar/ToolBar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 import NavigationItems from '../../components/Navigation/NavigationItems/NavigationItems';
+import Column from '../../components/UI/Column/Column';
 
 // CSS
 import classes from './Layout.module.css';
@@ -26,7 +27,6 @@ class Layout extends Component {
     }
 
     handleOpenSideDrawer = () => {
-        console.log('hi')
         this.setState({ showSideDrawer: true });
     }
 
@@ -40,16 +40,21 @@ class Layout extends Component {
 
         return (
             <Aux>
-                <main>
-                    {this.props.children}
-                </main>
-                <div className={classes.NavigationContainer}>
+                <main className={[classes.MainContent].join(' ')}>
+                    <div className="row">
+                <Column
+                    customClasses={["NavigationLeft"]}
+                    colNum={2}
+                >
                     <NavigationItems />
+                </Column>
+                {this.props.children}
                 </div>
-                <ToolBar 
+                </main>
+                {/* <ToolBar 
                     handleOpenSideDrawer={this.handleOpenSideDrawer}
                 />
-                {sideDrawer}
+                {sideDrawer} */}
             </Aux>
         );
     }
