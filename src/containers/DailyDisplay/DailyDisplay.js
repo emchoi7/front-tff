@@ -14,11 +14,19 @@ import recordsData from '../../data/data';
 
 class DailyDisplay extends Component {
     state = {
-        currentDate: new Date(),
-        year: "",
-        month: "",
-        day: "",
+        currentDate: new Date(2021, 0, 1),
+        year: "2021",
+        month: "1",
+        day: "1",
         data: []
+    }
+
+    loadCurrentData = (year, month, day) => {
+        return recordsData.filter(
+            record => record.year === year 
+            && record.month === month 
+            && record.day === day
+        );
     }
 
     // Click one day next
@@ -30,11 +38,7 @@ class DailyDisplay extends Component {
         const month = String(nextDate.getMonth()+1);
         const day = String(nextDate.getDate());
 
-        const currentData = recordsData.filter(
-        record => record.year === year 
-        && record.month === month 
-        && record.day === day
-        );
+        const currentData = this.loadCurrentData(year, month, day);
 
         this.setState({
             currentDate: nextDate,
@@ -54,11 +58,7 @@ class DailyDisplay extends Component {
         const month = String(prevDate.getMonth()+1);
         const day = String(prevDate.getDate());
 
-        const currentData = recordsData.filter(
-        record => record.year === year 
-        && record.month === month 
-        && record.day === day
-        );
+        const currentData = this.loadCurrentData(year, month, day);
 
         this.setState({
             currentDate: prevDate,
@@ -69,21 +69,30 @@ class DailyDisplay extends Component {
         });
     }
 
+    componentDidMount = () => {
+        const currentData = this.loadCurrentData(this.state.year, this.state.month, this.state.day);
+
+        this.setState({
+            data: currentData
+        });
+    }
+
     // Handle DatePicker
     handleChangeDatePicker = date => {
         if(date !== -1 && date !== undefined) {
-        const day = String(date.getDate());
-        const month = String(date.getMonth()+1);
-        const year = String(date.getFullYear());
-        const currentData = recordsData.filter(
-            record => record.year === year 
-            && record.month === month 
-            && record.day === day
-        );
-        this.setState({
-            currentDate: date,
-            data: currentData
-        });
+            const day = String(date.getDate());
+            const month = String(date.getMonth()+1);
+            const year = String(date.getFullYear());
+
+            const currentData = this.loadCurrentData(year, month, day);
+
+            this.setState({
+                currentDate: date,
+                year,
+                month,
+                day,
+                data: currentData
+            });
         }
     }
 
@@ -95,12 +104,16 @@ class DailyDisplay extends Component {
             handleClickDateNext={this.handleClickDateNext}
             handleChangeDatePicker={this.handleChangeDatePicker}
         />);
+        
         return (
+            <div className={classes.DailyDisplay}>
+                {daily}
+            </div>
             // <div className={classes.DailyDisplay}>
-                <TwoColumnView
-                    mainContent={daily}
-                    sideContent={"Side Content"}
-                />
+                // <TwoColumnView
+                //     mainContent={daily}
+                //     sideContent={"Side Content"}
+                // />
             // </div>
         );
     }

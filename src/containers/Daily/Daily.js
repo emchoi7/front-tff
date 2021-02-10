@@ -4,7 +4,7 @@
     Record components are put into an array 
 */
 import React, {Component} from 'react';
-// import AddModal from '../AddRecord/AddModal';
+import AddModal from '../../AddRecord/AddModal';
 import Record from '../../components/Record/Record';
 import DateSelector from '../../components/DateSelector/DateSelector';
 
@@ -61,21 +61,18 @@ export default class Daily extends Component {
             }
         );
 
-        // let addModal = null;
-        // if(
-        //     // this.props.date.getMonth() === new Date().getMonth() 
-        //     // && this.props.date.getDate() === new Date().getDate()
-        //     // && this.props.date.getFullYear() === new Date().getFullYear() 
-        //     this.props.date.getMonth() === 11
-        //     && this.props.date.getDate() === 30
-        //     && this.props.date.getFullYear() === 2019
+        let addModal = null;
+        if(
+            // this.props.date.getMonth() === new Date().getMonth() 
+            // && this.props.date.getDate() === new Date().getDate()
+            // && this.props.date.getFullYear() === new Date().getFullYear() 
+            this.props.date.getMonth() === 0
+            && this.props.date.getDate() === 1
+            && this.props.date.getFullYear() === 2021
 
-        // ) {
-        //     addModal = 
-        //     (<div className="row">
-        //         <AddModal />
-        //     </div>);
-        // }
+        ) {
+            addModal = (<AddModal />);
+        }
         
         return (
             <div className={[classes.Daily].join(' ')}>
@@ -89,7 +86,7 @@ export default class Daily extends Component {
                         />
                     </div>
                 </div>
-                {/* {addModal} */}
+                {addModal}
                 <div className="row">
                     <div className="col text-center">
                         {records}

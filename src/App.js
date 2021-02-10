@@ -17,8 +17,8 @@ const App = () => {
         <Layout>
           <Switch>
             <Route exact path="/" component={DailyDisplay} />
-            <Route path="/calendar" component={MonthlyDisplay} />
-            <Route path="/settings"><p>Settings</p></Route>
+            {/* <Route path="/calendar" component={MonthlyDisplay} />
+            <Route path="/settings"><p>Settings</p></Route> */}
           </Switch>
         </Layout>
       </div>

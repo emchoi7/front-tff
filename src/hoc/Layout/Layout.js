@@ -42,12 +42,12 @@ class Layout extends Component {
             <Aux>
                 <main className={[classes.MainContent].join(' ')}>
                     <div className="row">
-                <Column
+                {/* <Column
                     customClasses={["NavigationLeft"]}
                     colNum={2}
                 >
                     <NavigationItems />
-                </Column>
+                </Column> */}
                 {this.props.children}
                 </div>
                 </main>

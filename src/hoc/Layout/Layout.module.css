@@ -1,5 +1,5 @@
 .MainContent {
-    border: solid;
+    /* border: solid; */
 }
 
 @media all and (max-width: 599px) {

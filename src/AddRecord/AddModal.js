@@ -24,37 +24,38 @@ export default class AddModal extends Component {
 
     render() {
         const date = new Date();
-        const dateStr = date.toDateString();
+        // const dateStr = date.toDateString();
+        const dateStr = "Fri Jan 01 2021";
         const timeStr = date.toTimeString().split(':').slice(0,2).join(':');
-        let hungerLevel = 'Neutral'
-        let colorClass = 'hunger-blue' 
+        let hungerLevel = 'Neutral';
+        let colorClass = 'hunger-level-5';
         if(this.state.score >= 0 && this.state.score < 1) {
             hungerLevel = 'Starving';
-            colorClass = 'hunger-red';
+            colorClass = 'hunger-level-1';
         } else if(this.state.score >= 1 && this.state.score < 2) {
             hungerLevel = 'Famished';
-            colorClass = 'hunger-orange';
+            colorClass = 'hunger-level-2';
         } else if(this.state.score >= 2 && this.state.score < 3) {
             hungerLevel = 'Hungry';
-            colorClass = 'hunger-yellow';
+            colorClass = 'hunger-level-3';
         } else if(this.state.score >= 3 && this.state.score < 4) {
             hungerLevel = 'Peckish';
-            colorClass = 'hunger-green';
+            colorClass = 'hunger-level-4';
         } else if(this.state.score >= 4 && this.state.score < 5) {
             hungerLevel = 'Neutral';
-            colorClass = 'hunger-blue';
+            colorClass = 'hunger-level-5';
         } else if(this.state.score >= 5 && this.state.score < 6) {
             hungerLevel = 'Satiated';
-            colorClass = 'hunger-green';
+            colorClass = 'hunger-level-4';
         } else if(this.state.score >= 6 && this.state.score < 7) {
             hungerLevel = 'Full';
-            colorClass = 'hunger-yellow';
+            colorClass = 'hunger-level-3';
         } else if(this.state.score >= 7 && this.state.score < 8) {
             hungerLevel = 'Stuffed';
-            colorClass = 'hunger-orange';
+            colorClass = 'hunger-level-2';
         } else if(this.state.score >= 8 && this.state.score <= 9) {
             hungerLevel = 'Bursting';
-            colorClass = 'hunger-red';
+            colorClass = 'hunger-level-1';
         }
         return (
             <div className={colorClass + ' container text-center py-2 my-2 add-modal'}>
