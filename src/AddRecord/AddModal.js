@@ -22,6 +22,13 @@ export default class AddModal extends Component {
         });
     }
 
+    handleTextInput = (e) => {
+        const text = e.target.value;
+        this.setState({
+            text
+        });
+    }
+
     render() {
         const date = new Date();
         // const dateStr = date.toDateString();
@@ -84,11 +91,13 @@ export default class AddModal extends Component {
                         <div className="col"><input
                         type="text"
                         value={this.state.text}
+                        onChange={this.handleTextInput}
                         className="col add-text"
                     ></input></div>
                     </div>
                     <button
                         className="save-record-btn my-2"
+                        onClick={() => this.props.handleSubmitData(this.state.score, this.state.text)} // Refer to the react course...
                     >Save Record</button>
                 </form>
             </div>

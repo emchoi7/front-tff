@@ -71,7 +71,9 @@ export default class Daily extends Component {
             && this.props.date.getFullYear() === 2021
 
         ) {
-            addModal = (<AddModal />);
+            addModal = (<AddModal 
+                handleSubmitData={this.props.handleSubmitData}
+            />);
         }
         
         return (

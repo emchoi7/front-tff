@@ -10,7 +10,7 @@ function DateSelector(props) {
                 <Button
                     type={"Arrow"}
                     onClick={props.handleClickDateBack}
-                > <i class="fas fa-caret-left"></i> </Button>
+                > <i className="fas fa-caret-left"></i> </Button>
                 <DatePicker
                     selected={props.date}
                     onChange={props.handleChangeDatePicker}
@@ -19,7 +19,7 @@ function DateSelector(props) {
                 <Button
                     type={"Arrow"}
                     onClick={props.handleClickDateNext}
-                > <i class="fas fa-caret-right"></i> </Button>
+                > <i className="fas fa-caret-right"></i> </Button>
         </div>
     )
 }

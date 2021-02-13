@@ -21,12 +21,32 @@ class DailyDisplay extends Component {
         data: []
     }
 
-    loadCurrentData = (year, month, day) => {
+    returnCurrentData = (year, month, day) => {
         return recordsData.filter(
             record => record.year === year 
             && record.month === month 
             && record.day === day
         );
+    }
+
+    handleSubmitData = (score, text) => {
+        console.log("Submitted") // Let's put data in the local storage!!
+        console.log(this.state.data[0])
+        let data = [...this.state.data]; // make a copy...
+        const timestamp = new Date()
+        const newLog = {
+            id: timestamp.getTime(),
+            year: "2021",
+            month: "1",
+            day: "1",
+            time: timestamp.toTimeString().split(' ')[0],
+            score,
+            text
+        };
+        data.push(newLog);
+        this.setState({
+            data
+        });
     }
 
     // Click one day next
@@ -38,7 +58,7 @@ class DailyDisplay extends Component {
         const month = String(nextDate.getMonth()+1);
         const day = String(nextDate.getDate());
 
-        const currentData = this.loadCurrentData(year, month, day);
+        const currentData = this.returnCurrentData(year, month, day);
 
         this.setState({
             currentDate: nextDate,
@@ -58,7 +78,7 @@ class DailyDisplay extends Component {
         const month = String(prevDate.getMonth()+1);
         const day = String(prevDate.getDate());
 
-        const currentData = this.loadCurrentData(year, month, day);
+        const currentData = this.returnCurrentData(year, month, day);
 
         this.setState({
             currentDate: prevDate,
@@ -70,11 +90,13 @@ class DailyDisplay extends Component {
     }
 
     componentDidMount = () => {
-        const currentData = this.loadCurrentData(this.state.year, this.state.month, this.state.day);
+        if(this.state.data.length === 0) {
+            const currentData = this.returnCurrentData(this.state.year, this.state.month, this.state.day);
 
-        this.setState({
-            data: currentData
-        });
+            this.setState({
+                data: currentData
+            });
+        }
     }
 
     // Handle DatePicker
@@ -84,7 +106,7 @@ class DailyDisplay extends Component {
             const month = String(date.getMonth()+1);
             const year = String(date.getFullYear());
 
-            const currentData = this.loadCurrentData(year, month, day);
+            const currentData = this.returnCurrentData(year, month, day);
 
             this.setState({
                 currentDate: date,
@@ -103,6 +125,7 @@ class DailyDisplay extends Component {
             handleClickDateBack={this.handleClickDateBack}
             handleClickDateNext={this.handleClickDateNext}
             handleChangeDatePicker={this.handleChangeDatePicker}
+            handleSubmitData={this.handleSubmitData}
         />);
         
         return (
