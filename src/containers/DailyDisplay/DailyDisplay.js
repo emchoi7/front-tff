@@ -18,7 +18,11 @@ class DailyDisplay extends Component {
         year: "2021",
         month: "1",
         day: "1",
-        data: []
+        data: recordsData.filter(
+            record => record.year === "2021"
+            && record.month === "1"
+            && record.day === "1"
+        )
     }
 
     returnCurrentData = (year, month, day) => {
@@ -29,9 +33,8 @@ class DailyDisplay extends Component {
         );
     }
 
-    handleSubmitData = (score, text) => {
-        console.log("Submitted") // Let's put data in the local storage!!
-        console.log(this.state.data[0])
+    handleSubmitData = (e, score, text) => {
+        e.preventDefault();
         let data = [...this.state.data]; // make a copy...
         const timestamp = new Date()
         const newLog = {
@@ -89,15 +92,16 @@ class DailyDisplay extends Component {
         });
     }
 
-    componentDidMount = () => {
-        if(this.state.data.length === 0) {
-            const currentData = this.returnCurrentData(this.state.year, this.state.month, this.state.day);
+    // componentDidMount = () => {
+    //     let storage = window.sessionStorage;
+    //     if(this.state.data.length === 0) {
+    //         const currentData = this.returnCurrentData(this.state.year, this.state.month, this.state.day);
 
-            this.setState({
-                data: currentData
-            });
-        }
-    }
+    //         this.setState({
+    //             data: currentData
+    //         });
+    //     }
+    // }
 
     // Handle DatePicker
     handleChangeDatePicker = date => {

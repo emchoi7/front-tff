@@ -97,7 +97,7 @@ export default class AddModal extends Component {
                     </div>
                     <button
                         className="save-record-btn my-2"
-                        onClick={() => this.props.handleSubmitData(this.state.score, this.state.text)} // Refer to the react course...
+                        onClick={(e) => this.props.handleSubmitData(e, this.state.score, this.state.text)} // Refer to the react course...
                     >Save Record</button>
                 </form>
             </div>
