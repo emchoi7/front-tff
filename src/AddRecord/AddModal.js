@@ -5,6 +5,8 @@
 */
 import React, { Component } from 'react';
 
+import classes from './AddModal.module.css';
+
 export default class AddModal extends Component {
     constructor() {
         super();
@@ -65,7 +67,7 @@ export default class AddModal extends Component {
             colorClass = 'hunger-level-1';
         }
         return (
-            <div className={colorClass + ' container text-center py-2 my-2 add-modal'}>
+            <div className={classes.AddModal + ' ' + colorClass + ' container text-center py-2 my-2'}>
                 <div className="row">
                     <h5 className="col">{dateStr}</h5>
                 </div>

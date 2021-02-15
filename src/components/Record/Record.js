@@ -43,17 +43,17 @@ const Record = (props) => {
     let details = null;
     if(props.showDetails) {
         details = 
-        (<div className="row record-card-add">
+        (<div className={classes.RecordItem}>
             <p>{props.notes}</p>
         </div>);
     }
 
     return (
         <div className={classNamesStr} onClick={props.handleClickRecord.bind(this, props.time)}>
-                <div className="row">
+                <div className={classes.RecordItem}>
                     <p className="text-center col m-1">{props.time}</p>
                 </div>
-                <div className="row">
+                <div className={classes.RecordItem}>
                     <h3 className="text-center col mt-0">{hungerLevel}</h3>
                 </div>
                 {details}
