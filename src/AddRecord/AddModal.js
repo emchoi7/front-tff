@@ -67,38 +67,34 @@ export default class AddModal extends Component {
             colorClass = 'hunger-level-1';
         }
         return (
-            <div className={classes.AddModal + ' ' + colorClass + ' container text-center py-2 my-2'}>
-                <div className="row">
+            <div className={classes.AddModal + ' ' + colorClass}>
+                <div className={classes.AddModalItem}>
                     <h5 className="col">{dateStr}</h5>
                 </div>
-                <div className="row">
+                <div className={classes.AddModalItem}>
                     <h5 className="col">{timeStr}</h5>
                 </div>
-                <div className="row">
+                <div className={classes.AddModalItem}>
                     <h3 className="col">{hungerLevel}</h3>
                 </div>
-                <form>
-                    <div className="row">
-                        <div className="col"><input 
-                            type="range" 
-                            min="0" 
-                            max="9"
-                            step="0.1" 
-                            value={this.state.score} 
-                            className="score-slider"
-                            onChange={this.handleSliderChange}
-                        ></input></div>
-                    </div>
-                    <div className="row">
-                        <div className="col"><input
-                        type="text"
-                        value={this.state.text}
-                        onChange={this.handleTextInput}
-                        className="col add-text"
-                    ></input></div>
-                    </div>
+                <form className={classes.AddModalFormContainer}>
+                    <input 
+                        type="range" 
+                        min="0" 
+                        max="9"
+                        step="0.1" 
+                        value={this.state.score}
+                        className={classes.AddModalFormItem}
+                        onChange={this.handleSliderChange}
+                    ></input>
+                    <input
+                    type="text"
+                    value={this.state.text}
+                    className={classes.AddModalFormItem}
+                    onChange={this.handleTextInput}
+                    ></input>
                     <button
-                        className="save-record-btn my-2"
+                        className={classes.AddModalFormItem}
                         onClick={(e) => this.props.handleSubmitData(e, this.state.score, this.state.text)} // Refer to the react course...
                     >Save Record</button>
                 </form>
