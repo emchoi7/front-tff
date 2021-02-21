@@ -4,10 +4,10 @@ import React, {Component} from 'react';
 import Aux from '../Aux';
 
 // Components
-import ToolBar from '../../components/Navigation/ToolBar/ToolBar';
+// import ToolBar from '../../components/Navigation/ToolBar/ToolBar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
-import NavigationItems from '../../components/Navigation/NavigationItems/NavigationItems';
-import Column from '../../components/UI/Column/Column';
+// import NavigationItems from '../../components/Navigation/NavigationItems/NavigationItems';
+// import Column from '../../components/UI/Column/Column';
 
 // CSS
 import classes from './Layout.module.css';

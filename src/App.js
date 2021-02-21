@@ -6,7 +6,7 @@ import Layout from './hoc/Layout/Layout';
 
 // Container
 import DailyDisplay from './containers/DailyDisplay/DailyDisplay';
-import MonthlyDisplay from './containers/MonthlyDisplay/MonthlyDisplay';
+// import MonthlyDisplay from './containers/MonthlyDisplay/MonthlyDisplay';
 
 // CSS
 import classes from './App.module.css';
