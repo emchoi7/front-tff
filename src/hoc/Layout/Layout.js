@@ -31,12 +31,12 @@ class Layout extends Component {
     }
 
     render() {
-        let sideDrawer = null;
-        if(this.state.showSideDrawer) {
-            sideDrawer = <SideDrawer 
-                toggleSideDrawer={this.toggleSideDrawer}
-            />;
-        }
+        // let sideDrawer = null;
+        // if(this.state.showSideDrawer) {
+        //     sideDrawer = <SideDrawer 
+        //         toggleSideDrawer={this.toggleSideDrawer}
+        //     />;
+        // }
 
         return (
             <Aux>

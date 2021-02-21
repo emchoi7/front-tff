@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import Daily from '../Daily/Daily';
 
 // Components
-import TwoColumnView from '../../components/UI/TwoColumnView/TwoColumnView';
+// import TwoColumnView from '../../components/UI/TwoColumnView/TwoColumnView';
 
 // CSS
 import classes from './DailyDisplay.module.css';
