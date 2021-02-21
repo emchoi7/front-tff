@@ -7,7 +7,7 @@ import Aux from '../../../hoc/Aux';
 import Column from '../Column/Column';
 
 // CSS
-import classes from './TwoColumnView.module.css'
+// import classes from './TwoColumnView.module.css'
 
 const twoColumnView = (props) => {
     return (
